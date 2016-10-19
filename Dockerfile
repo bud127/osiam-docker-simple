@@ -7,7 +7,7 @@ MAINTAINER Jens Oberender <j.oberender@tarent.de>
 #### update/install packages ####
 RUN echo 'force-unsafe-io' | tee /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
     echo 'DPkg::Post-Invoke {"/bin/rm -f /var/cache/apt/archives/*.deb || true";};' | tee /etc/apt/apt.conf.d/no-cache && \
-    DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get dist-upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get dist-upgrade -y && apt-get install mksh && \
     apt-get clean && rm -rf /var/cache/apt/*
 
 #### osiam ####
